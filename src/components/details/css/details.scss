@@ -1,0 +1,40 @@
+.details{
+  text-align: center;
+  ul{
+    width: 80%;
+    margin: 0 auto;
+    li{
+      width: 100%;
+      img{
+        width: 100%;
+      }
+    }
+  }
+  .details-title{
+    font-size: .28rem;
+    line-height: .48rem;
+  }
+  .details-des{
+    font-size: .22rem;
+    line-height: .4rem;
+  }
+  .details-price{
+    font-size: .28rem;
+    line-height: .7rem;
+  }
+  .details-promise{
+    font-size: .12rem;
+    line-height: .5rem;
+    opacity: .6;
+  }
+  .container{
+    display: flex;
+    align-items: center;
+    width: 2.5rem;
+    margin: 0 auto;
+    opacity: .6;
+    span{
+      font-size: .22rem;
+    }
+  }
+}

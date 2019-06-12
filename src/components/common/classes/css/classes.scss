@@ -1,0 +1,30 @@
+.classes{
+  display: flex;
+  height: 1.2rem;
+  a{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+    .iconfont{
+      font-size: .4rem;
+    }
+    .icon1{
+      color: rgb(0, 183, 255);
+    }
+    .icon2{
+      color: rgb(238, 116, 116);
+    }
+    .icon3{
+      color: rgb(185, 185, 1);
+    }
+    .icon4{
+      color: rgb(255, 100, 177)
+    }
+    span{
+      font-size: .16rem;
+    }
+  }
+}

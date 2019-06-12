@@ -1,0 +1,35 @@
+.tabbar{
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 3px 14px 2px rgba(0,0,0,.12);
+  ul{
+    display: flex;
+    height: 1rem;
+    background-color: #fff;
+    li{
+      flex: 1;
+      .active{
+        color: #ff6700;
+      }
+      a{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #999;
+        height: 100%;
+        i{
+          width: .4rem;
+          height: .4rem;
+          margin: 0 auto .1rem;
+          font-size: 0.4rem;
+        }
+        span{
+          font-size: 0.22rem;
+        }
+      }
+    }
+  }
+}
