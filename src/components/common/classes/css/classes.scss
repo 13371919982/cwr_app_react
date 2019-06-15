@@ -1,6 +1,6 @@
 .classes{
   display: flex;
-  height: 1.2rem;
+  height: 1.5rem;
   a{
     display: flex;
     flex-direction: column;
@@ -8,6 +8,7 @@
     align-items: center;
     width: 25%;
     height: 100%;
+    padding: .2rem 0;
     .iconfont{
       font-size: .4rem;
     }

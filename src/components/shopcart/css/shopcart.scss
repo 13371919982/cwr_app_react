@@ -1,4 +1,5 @@
 .shopcart{
+  margin-bottom: 1rem;
   ul{
     li{
       display: flex;
@@ -15,16 +16,29 @@
       .container{
         width: 4.8rem;
         .shopcart-title{
+          font-size: .24rem;
+        }
+        .shopcart-brand,.shopcart-size{
           font-size: .22rem;
+          opacity: .6;
         }
         .shopcart-size{
-          font-size: .18rem;
+          font-size: .22rem;
         }
         div{
           display: flex;
           justify-content: space-between;
+          align-items: center;
           .shopcart-price{
             font-size: .22rem;
+            color: red;
+          }
+          p{
+            width: 3.5rem;
+          }
+          span{
+            font-size: 0.22rem;
+            color: red;
           }
         }
       }
@@ -37,20 +51,24 @@
     height: 1rem;
     .left{
       display: flex;
-      justify-content: space-between;
       align-items: center;
       width: 40%;
       height: 100%;
-      padding: .2rem;
+      input{
+        margin: 0 .2rem;
+      }
       span{
         font-size: .22rem;
+      }
+      .total{
+        color: red;
       }
     }
     .btn{
       width: 40%;
       height: 80%;
       border: none;
-      background-color: #333;
+      background-color: #ff6700;
       color: #fff;
       opacity: .8;
     }

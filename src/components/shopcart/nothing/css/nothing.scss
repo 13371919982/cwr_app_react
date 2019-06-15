@@ -1,0 +1,29 @@
+.nothing{
+  position: absolute;
+  top: -15%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 4rem;
+  height: 4rem;
+  text-align: center;
+  .iconfont{
+    font-size: 2rem;
+    color: #ddd;
+  }
+  h1{
+    margin-top: .5rem;
+    font-size: .3rem;
+    color: #ddd;
+  }
+  a{
+    width: 2rem;
+    height: .5rem;
+    margin: .3rem auto;
+    font-size: .3rem;
+    background-color: #ff6700;
+    line-height: .5rem;
+    color: #fff;
+  }
+}

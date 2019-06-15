@@ -1,0 +1,41 @@
+.setting{
+  height: calc( 100vh - 2rem );
+  background-color: rgb(245, 245, 245);
+  text-align: center;
+  ul{
+    margin-top: .1rem;
+    padding: 0 0 0 .3rem;
+    border: 1px solid rgb(230, 230, 230);
+    border-left: none;
+    border-right: none; 
+    background-color: #fff;
+    li{
+      padding: 0 .2rem 0 0;
+      font-size: .25rem;
+      a{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: .8rem;
+        .iconfont{
+          color: #aaa;
+        }
+      }
+    }
+    li+li{
+      border-top: 1px solid rgb(230, 230, 230);
+      border-left: none;
+      border-right: none; 
+    }
+  }
+  .btn{
+    width: 90%;
+    height: .9rem;
+    margin: 3rem auto 0;
+    line-height: .9rem;
+    border: none;
+    font-size: .3rem;
+    background-color: #ff6700;
+    color: #fff
+  }
+}

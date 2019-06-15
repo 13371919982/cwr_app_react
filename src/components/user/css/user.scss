@@ -1,11 +1,18 @@
 .user{
   background-color: #eee;
   height: 100vh;
+  .topnav{
+    span{
+      .iconfont{
+        font-size: .55rem;
+      }
+    }
+  }
   .login{
     display: flex;
     align-items: center;
-    height: 1.3rem;
-    background-color: #555;
+    height: 2rem;
+    background-color:#444;
     color: #fff;
     .iconfont{
       font-size: 1rem;
@@ -28,6 +35,6 @@
     font-size: .4rem;
     text-align: center;
     color: #ddd;
-    line-height: 1rem;
+    line-height: 2rem;
   }
 }

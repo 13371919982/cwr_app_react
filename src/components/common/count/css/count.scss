@@ -1,8 +1,8 @@
 .count{
   display: flex;
   width: 1.2rem;
-  border: 1px solid #000;
-  opacity: .6;
+  border: 1px solid #ddd;
+  opacity: .7 !important; 
   .count-text{
     width: .6rem;
   }
@@ -11,6 +11,7 @@
     height: .4rem;
     border: none;
     background-color: #fff;
+    color: #999 !important;
   }
   span{
     display: block;
@@ -19,5 +20,6 @@
     font-size: .22rem;
     line-height: .4rem;
     text-align: center;
+    color: #999 !important;
   }
 }

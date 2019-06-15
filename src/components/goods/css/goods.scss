@@ -1,13 +1,15 @@
 .goods{
-  margin: 0 .1rem;
+  margin: 0 .1rem 1.2rem;
   ul{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     li{
       width: 49.5%;
-      height: 4.6rem;
       margin-bottom: .16rem;
+      padding: .2rem;
+      border-radius: .1rem;
+      box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.12);
       a{
         text-align: center;
       }
@@ -19,7 +21,10 @@
       }
       .goods-title{
         font-size: .28rem;
-        line-height: 0.48rem;
+        line-height: 0.8rem;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
       .goods-des{
         font-size: .22rem;
@@ -30,6 +35,7 @@
         font-size: 0.28rem;
         height: .7rem;
         line-height: .7rem;
+        color: red;
       }
     }
   }

@@ -15,10 +15,6 @@ export default class Home extends Component {
           <Category />
           <Goods />
           <Tabbar />
-          {/* <Details />
-          <Shopcart />
-          <User /> */}
-          {/* <Login /> */}
         </div>
       </div>
     )

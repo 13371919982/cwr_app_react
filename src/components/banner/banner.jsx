@@ -3,7 +3,11 @@ import './css/banner.scss'
 import Swiper from "swiper";
 
 export default class Banner extends Component {
-  componentDidMount() {
+  state = {
+    list: []
+  }
+
+  carousel(){
     new Swiper('.swiper-container', {
       autoplay: true,
       pagination: {
@@ -11,17 +15,33 @@ export default class Banner extends Component {
       },
       loop : true
     })
+  }
 
+  componentDidMount() {
     // 请求轮播图片
-    fetch('')
+    this.axios.get('/index/carousel').then(res=>{
+      this.setState({
+        list: res
+      })
+      this.carousel()
+    })
+    
   }
   render() {
     return (
       <div className='banner swiper-container'>
         <ul className='swiper-wrapper'>
-          <li className='swiper-slide'><a href="/"><img src={require('./img/banner1.png')} alt=""/></a></li>
-          <li className='swiper-slide'><a href="/"><img src={require('./img/banner2.png')} alt=""/></a></li>
-          <li className='swiper-slide'><a href="/"><img src={require('./img/banner3.png')} alt=""/></a></li>
+          {
+            this.state.list.length > 0 && this.state.list.map((item,i)=>{
+              return (
+                <li className='swiper-slide' key={ i }>
+                  <a href="/">
+                    <img src={ item.img } alt=""/>
+                  </a>
+                </li>
+              )
+            })
+          }
         </ul>
       </div>
     )

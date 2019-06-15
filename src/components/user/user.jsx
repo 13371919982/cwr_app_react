@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import './css/user.scss'
 import Classes from '../common/classes/classes'
-import Table from '../common/table/table';
+import Table from '../common/table/table'
+import Tabbar from "../tabbar/tabbar"
+import Topnav from "../common/topnav/topnav"
+import {
+  NavLink
+} from "react-router-dom"
 
 export default class User extends Component {
   state = {
@@ -23,13 +28,34 @@ export default class User extends Component {
       { icon: 'iconfont iconkefu', title: '客服咨询' },
     ]
   }
+
+  // 跳转设置退出页面
+  backHistoryHandler = () => {
+    this.props.history.push('/setting')
+  }
+
   render() {
     return (
       <div className='user'>
-        <a href="/" className='login'>
-          <i className='iconfont iconyonghu'></i>
-          <span>未登录</span>
-        </a>
+        <Topnav 
+          leftIcon={ 'iconfont iconshezhi' }
+          centerText={ '个人中心' }
+          backHistoryHandler={ this.backHistoryHandler }
+        />
+        {
+          !sessionStorage['token'] ? 
+          ( 
+            <NavLink to={ '/login' } className='login'>
+              <i className='iconfont iconyonghu'></i>
+              <span>未登录</span>
+            </NavLink> 
+          ) : (
+            <div className='login'>
+              <i className='iconfont iconyonghu'></i>
+              <span>欢迎 { sessionStorage['uname'] }！</span>
+            </div>
+          )
+        }
         <Classes 
           list={ this.state.list }
         />
@@ -37,6 +63,7 @@ export default class User extends Component {
           list={ this.state.serverList }
         />
         <p>客服电话：13371919982</p>
+        <Tabbar />
       </div>
     )
   }
