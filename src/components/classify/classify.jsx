@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './css/classify.scss'
 import Tabbar from "../tabbar/tabbar"
-import Search from '../common/search/search'
+import Search from '../search/search'
 
 export default class Classify extends Component {
   render() {

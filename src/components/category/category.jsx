@@ -13,8 +13,8 @@ export default class Category extends Component {
   render() {
     return (
       <div className='category'>
-        <Classes 
-          list={ this.state.list }
+        <Classes
+          list={this.state.list}
         />
       </div>
     )

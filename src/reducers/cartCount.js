@@ -1,5 +1,5 @@
 // 购物车 
-export default function (state={},action) {
+export default function (state = {}, action) {
   // let goods = action.data
   switch (action.type) {
     case 'ADD_COUNT':
@@ -10,5 +10,5 @@ export default function (state={},action) {
       return 'TOTAL_COUNT'
     default:
       return '所有商品信息'
-  } 
+  }
 }

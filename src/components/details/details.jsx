@@ -24,20 +24,24 @@ export default class Details extends Component {
 
   componentDidMount() {
     // 请求商品详情
-    this.axios.get( '/detail/detail', { params: {
-      lid: this.state.lid
-    }}).then(res => 
+    this.axios.get('/detail/detail', {
+      params: {
+        lid: this.state.lid
+      }
+    }).then(res =>
       this.setState({
         data: res[0]
       })
     )
 
     // 验证用户是否收藏
-    this.axios.get( '/detail/additemlid', { params: {
-      uname: sessionStorage['uname'],
-      lid: this.state.lid
-    }}).then(res => {
-      if ( res.length>0) {
+    this.axios.get('/detail/additemlid', {
+      params: {
+        uname: sessionStorage['uname'],
+        lid: this.state.lid
+      }
+    }).then(res => {
+      if (res.length > 0) {
         this.setState({
           icon: 'iconfont iconshoucang1'
         })
@@ -46,8 +50,8 @@ export default class Details extends Component {
   }
 
   // 商品数量自减
-  subHandler = ( count) => {
-    if(count <= 1) return
+  subHandler = (count) => {
+    if (count <= 1) return
     count--
     this.setState({
       count
@@ -55,7 +59,7 @@ export default class Details extends Component {
   }
 
   // 商品数量自增
-  addHandler = ( count) => {
+  addHandler = (count) => {
     count++
     this.setState({
       count
@@ -64,11 +68,13 @@ export default class Details extends Component {
 
   // 加入收藏
   addCollectHandler = () => {
-    if(this.state.icon === 'iconfont iconshoucang2') {
-      this.axios.get( '/detail/additem', { params: {
-        uname: sessionStorage['uname'],
-        lid: this.state.lid
-      }}).then(res => {
+    if (this.state.icon === 'iconfont iconshoucang2') {
+      this.axios.get('/detail/additem', {
+        params: {
+          uname: sessionStorage['uname'],
+          lid: this.state.lid
+        }
+      }).then(res => {
         this.alertHandler()
         this.setState({
           icon: 'iconfont iconshoucang1',
@@ -76,10 +82,12 @@ export default class Details extends Component {
         })
       })
     } else if (this.state.icon === 'iconfont iconshoucang1') {
-      this.axios.get( '/detail/deleteAdditem', { params: {
-        uname: sessionStorage['uname'],
-        lid: this.state.lid
-      }}).then(res => {
+      this.axios.get('/detail/deleteAdditem', {
+        params: {
+          uname: sessionStorage['uname'],
+          lid: this.state.lid
+        }
+      }).then(res => {
         this.alertHandler()
         this.setState({
           icon: 'iconfont iconshoucang2',
@@ -90,7 +98,7 @@ export default class Details extends Component {
   }
 
   // 封装提示框以便重复利用
-  alertHandler () {
+  alertHandler() {
     this.setState({
       alert: true,
     })
@@ -103,29 +111,35 @@ export default class Details extends Component {
 
   // 加入购物车
   addCartHandler = () => {
-    if( sessionStorage['token']) {
-      this.axios.get( '/detail/productLid', { params:{
-        uname:sessionStorage['uname'],
-        lid:this.state.lid
-      }}).then(res => {
-        if( res.length>0) {
-          this.axios.get( '/detail/update', { params:{
-            lid: this.state.lid,
-            count: this.state.count,
-            isChecked: 0
-          }}).then(res => {
+    if (sessionStorage['token']) {
+      this.axios.get('/detail/productLid', {
+        params: {
+          uname: sessionStorage['uname'],
+          lid: this.state.lid
+        }
+      }).then(res => {
+        if (res.length > 0) {
+          this.axios.get('/detail/update', {
+            params: {
+              lid: this.state.lid,
+              count: this.state.count,
+              isChecked: 0
+            }
+          }).then(res => {
             this.alertHandler()
             this.setState({
               msg: '加入购物车成功'
             })
           })
         } else {
-          this.axios.get( '/detail/addcar', { params:{
-            uname: sessionStorage['uname'],
-            lid: this.state.lid,
-            count: this.state.count,
-            isChecked: 0
-          }}).then(res=> {
+          this.axios.get('/detail/addcar', {
+            params: {
+              uname: sessionStorage['uname'],
+              lid: this.state.lid,
+              count: this.state.count,
+              isChecked: 0
+            }
+          }).then(res => {
             this.alertHandler()
             this.setState({
               msg: '加入购物车成功'
@@ -134,16 +148,53 @@ export default class Details extends Component {
         }
       })
     } else {
-      this.props.history.push( '/login')
+      this.props.history.push('/login')
+    }
+  }
+
+  // 跳去结算
+  toCartHandler = () => {
+    if (sessionStorage['token']) {
+      this.axios.get('/detail/productLid', {
+        params: {
+          uname: sessionStorage['uname'],
+          lid: this.state.lid
+        }
+      }).then(res => {
+        if (res.length > 0) {
+          this.axios.get('/detail/update', {
+            params: {
+              lid: this.state.lid,
+              count: this.state.count,
+              isChecked: 0
+            }
+          }).then(res => {
+            this.props.history.push('/shopcart')
+          })
+        } else {
+          this.axios.get('/detail/addcar', {
+            params: {
+              uname: sessionStorage['uname'],
+              lid: this.state.lid,
+              count: this.state.count,
+              isChecked: 0
+            }
+          }).then(res => {
+            this.props.history.push('/shopcart')
+          })
+        }
+      })
+    } else {
+      this.props.history.push('/login')
     }
   }
 
   // 历史记录返回一次
-  backHistoryHandler = () => this.props.history.goBack( -1)
+  backHistoryHandler = () => this.props.history.goBack(-1)
 
 
   // 组件即将卸载 不要更新state状态
-  componentWillUnmount () { 
+  componentWillUnmount() {
     this.setState = () => {
       return
     }
@@ -153,37 +204,38 @@ export default class Details extends Component {
     const { img, detail, brand, price, promise } = this.state.data
     return (
       <div className='details'>
-        <Topnav 
-          backHistoryHandler={ this.backHistoryHandler }
-          centerText={ brand }
+        <Topnav
+          backHistoryHandler={this.backHistoryHandler}
+          centerText={brand}
         />
         <ul>
           <li>
-            <img src={ img } alt=""/>
+            <img src={img} alt="" />
           </li>
         </ul>
-        <span onClick={ ()=>{ this.addCollectHandler() } } className={ this.state.icon }></span>
-        <h4 className='details-title'>{ detail }</h4>
-        <p className='details-des'>{ brand }</p>
-        <p className='details-price'>￥ { price }</p>
-        <p className='details-promise'>{ promise }</p>
+        <span onClick={() => { this.addCollectHandler() }} className={this.state.icon}></span>
+        <h4 className='details-title'>{detail}</h4>
+        <p className='details-des'>{brand}</p>
+        <p className='details-price'>￥ {price}</p>
+        <p className='details-promise'>{promise}</p>
         <div className='container'>
           <span>购买数量：</span>
           <Count
-            count={ this.state.count }
-            addHandler={ this.addHandler }
-            subHandler={ this.subHandler }
+            count={this.state.count}
+            addHandler={this.addHandler}
+            subHandler={this.subHandler}
           />
         </div>
         <Tarbar
-          path={ '/shopcart' }
-          addCartHandler={ this.addCartHandler }
+          path={'/shopcart'}
+          addCartHandler={this.addCartHandler}
+          toCartHandler={this.toCartHandler}
         />
         {
           this.state.alert && (
             <Alert
-              icon={ 'iconfont icongou' }
-              msg={ this.state.msg }
+              icon={'iconfont icongou'}
+              msg={this.state.msg}
             />
           )
         }

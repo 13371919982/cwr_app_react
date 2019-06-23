@@ -6,16 +6,16 @@ export default class Count extends Component {
     const { i, count, subHandler, addHandler } = this.props
     return (
       <div className='count'>
-        <input 
-          type="button" 
-          defaultValue='-' 
-          onClick={ () => subHandler( count, i) }
+        <input
+          type="button"
+          defaultValue='-'
+          onClick={() => subHandler(count, i)}
         />
-        <span>{ count }</span>
-        <input 
-          type="button" 
+        <span>{count}</span>
+        <input
+          type="button"
           defaultValue='+'
-          onClick={ () => addHandler( count, i) }
+          onClick={() => addHandler(count, i)}
         />
       </div>
     )

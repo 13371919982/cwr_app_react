@@ -37,30 +37,30 @@ export default class User extends Component {
   render() {
     return (
       <div className='user'>
-        <Topnav 
-          leftIcon={ 'iconfont iconshezhi' }
-          centerText={ '个人中心' }
-          backHistoryHandler={ this.backHistoryHandler }
+        <Topnav
+          leftIcon={'iconfont iconshezhi'}
+          centerText={'个人中心'}
+          backHistoryHandler={this.backHistoryHandler}
         />
         {
-          !sessionStorage['token'] ? 
-          ( 
-            <NavLink to={ '/login' } className='login'>
-              <i className='iconfont iconyonghu'></i>
-              <span>未登录</span>
-            </NavLink> 
-          ) : (
-            <div className='login'>
-              <i className='iconfont iconyonghu'></i>
-              <span>欢迎 { sessionStorage['uname'] }！</span>
-            </div>
-          )
+          !sessionStorage['token'] ?
+            (
+              <NavLink to={'/login'} className='login'>
+                <i className='iconfont iconyonghu'></i>
+                <span>未登录</span>
+              </NavLink>
+            ) : (
+              <div className='login'>
+                <i className='iconfont iconyonghu'></i>
+                <span>欢迎 {sessionStorage['uname']}！</span>
+              </div>
+            )
         }
-        <Classes 
-          list={ this.state.list }
+        <Classes
+          list={this.state.list}
         />
-        <Table 
-          list={ this.state.serverList }
+        <Table
+          list={this.state.serverList}
         />
         <p>客服电话：13371919982</p>
         <Tabbar />

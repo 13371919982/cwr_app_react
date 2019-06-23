@@ -6,8 +6,8 @@ export default class Alert extends Component {
     const { icon, msg } = this.props
     return (
       <div className='alert'>
-        <i className={ icon }></i>
-        <span>{ msg }</span>
+        <i className={icon}></i>
+        <span>{msg}</span>
       </div>
     )
   }

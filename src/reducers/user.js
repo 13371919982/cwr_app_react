@@ -1,5 +1,5 @@
 // 用户
-export default function ( state={}, action) {
+export default function (state = {}, action) {
   let goods = action.data
   switch (action.type) {
     case 'GET_NAME':

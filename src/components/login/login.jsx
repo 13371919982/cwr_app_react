@@ -28,10 +28,10 @@ export default class Login extends Component {
 
 
   // 清空 uname
-  clearHandler = () => this.setState({ uname: ''})
+  clearHandler = () => this.setState({ uname: '' })
 
   // 封装重置注册初始化
-  resetHandler () {
+  resetHandler() {
     return this.setState({
       uname: '',
       upwd: '',
@@ -47,7 +47,7 @@ export default class Login extends Component {
   // 右上角注册
   rightBtnHandler = () => {
     // 调用封装好的重置函数
-    if (this.state.rightBtn === '登录'){
+    if (this.state.rightBtn === '登录') {
       this.resetHandler()
       this.setState({
         centerText: '登录',
@@ -60,12 +60,12 @@ export default class Login extends Component {
 
   // 密码隐藏切换
   iconToggleHandler = () => {
-    if (this.state.icon==='iconfont iconyanjing') {
+    if (this.state.icon === 'iconfont iconyanjing') {
       this.setState({
         icon: 'iconfont iconyanjing1',
         type: 'text'
       })
-    } else if (this.state.icon==='iconfont iconyanjing1') {
+    } else if (this.state.icon === 'iconfont iconyanjing1') {
       this.setState({
         icon: 'iconfont iconyanjing',
         type: 'password'
@@ -81,7 +81,7 @@ export default class Login extends Component {
   }
 
   // 切换登录、注册
-  toggleHandler () {
+  toggleHandler() {
     if (this.state.loginToggle === '使用账号密码登录') {
       this.setState({
         uname: '',
@@ -102,13 +102,13 @@ export default class Login extends Component {
   }
 
   // 登录按钮disabled处理
-  disabledHandler () {
+  disabledHandler() {
     return !this.state.uname || !this.state.upwd
   }
 
   // 登录请求跳转
-  loginHandler () {
-    this.axios.post('/user/login',qs.stringify({
+  loginHandler() {
+    this.axios.post('/user/login', qs.stringify({
       uname: this.state.uname,
       upwd: this.state.upwd
     })).then(res => {
@@ -140,10 +140,10 @@ export default class Login extends Component {
   }
 
   // 历史记录返回一次
-  backHistoryHandler = () => this.props.history.goBack( -1)
+  backHistoryHandler = () => this.props.history.goBack(-1)
 
   // 组件即将卸载 不要更新state状态
-  componentWillUnmount () { 
+  componentWillUnmount() {
     this.setState = () => {
       return
     }
@@ -152,49 +152,49 @@ export default class Login extends Component {
   render() {
     return (
       <div className='login'>
-        <Topnav 
-          centerText={ this.state.centerText }
-          rightBtn={ this.state.rightBtn }
-          rightBtnHandler={ this.rightBtnHandler }
-          backHistoryHandler={ this.backHistoryHandler }
+        <Topnav
+          centerText={this.state.centerText}
+          rightBtn={this.state.rightBtn}
+          rightBtnHandler={this.rightBtnHandler}
+          backHistoryHandler={this.backHistoryHandler}
         />
-        <img src={require('./img/bgc.png')} alt=""/>
+        <img src={require('./img/bgc.png')} alt="" />
         <div className="bgc"></div>
         <div className='container'>
           <p>
-            <input type="text" placeholder={ this.state.unameText } value={ this.state.uname } onChange={ this.unameHandler }/>
+            <input type="text" placeholder={this.state.unameText} value={this.state.uname} onChange={this.unameHandler} />
             {
               this.state.uname !== '' && (
-                <span onClick={ this.clearHandler }>x</span>
+                <span onClick={this.clearHandler}>x</span>
               )
             }
           </p>
           <p>
-            <input type={ this.state.type } placeholder={ this.state.codeText } value={ this.state.upwd } onChange={ this.upwdHandler }/>
+            <input type={this.state.type} placeholder={this.state.codeText} value={this.state.upwd} onChange={this.upwdHandler} />
             {
               this.state.codeText === '请输入密码' && (
-                <span className='icon' onClick={ this.iconToggleHandler }><i className={ this.state.icon }></i></span>
+                <span className='icon' onClick={this.iconToggleHandler}><i className={this.state.icon}></i></span>
               )
             }
           </p>
           {
-            this.state.codeText === '请输入验证码' && ( 
-              <button>获取验证码</button> 
+            this.state.codeText === '请输入验证码' && (
+              <button>获取验证码</button>
             )
           }
-          <input 
-            className={ `btn ${ this.disabledHandler() ? 'active': '' }` }
-            type="button" 
-            value={ this.state.centerText } 
-            onChange={ this.btnTextHandler }
-            disabled={ this.disabledHandler() }
-            onClick={ () => this.loginHandler() }
+          <input
+            className={`btn ${this.disabledHandler() ? 'active' : ''}`}
+            type="button"
+            value={this.state.centerText}
+            onChange={this.btnTextHandler}
+            disabled={this.disabledHandler()}
+            onClick={() => this.loginHandler()}
           />
           <div className='foot'>
             {
               this.state.centerText !== '注册' && (
-                <span onClick={ ()=>{ this.toggleHandler() } }>{ this.state.loginToggle }</span>
-              )            
+                <span onClick={() => { this.toggleHandler() }}>{this.state.loginToggle}</span>
+              )
             }
             {
               this.state.loginToggle === '使用手机号登录' && (
@@ -206,7 +206,7 @@ export default class Login extends Component {
         {
           this.state.alert && (
             <Alert
-              msg={ this.state.msg }
+              msg={this.state.msg}
             />
           )
         }
